@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<table class="container py-5 text-center">
+    <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>{{symbol_looked.get("symbol")}}</td>
+        <td>{{symbol_looked.get("name")}}</td>
+        <td>${{symbol_looked.get("price")}}</td>
+    </tr>
+</table>
+
+{% endblock %}

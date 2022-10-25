@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="get">
+        <div class="mb-3">
+            <h3>Portfolio</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Current price</th>
+                    <th>Value</th>
+                </tr>
+                {% for stock in stocks_db %}
+                <tr>
+                    <td>{{ stock.get("symbol") }}</td>
+                    <td>{{ stock.get("shares") }}</td>
+                    <td>{{ stock.get("current_price") |usd }}</td>
+                    <td>{{ (stock.get("shares") * stock.get("current_price") | float) |usd}}</td>
+                </tr>
+                {% endfor %}
+
+            <hr class="dashed">
+                <tfoot>
+                    <tr>
+                        <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+                        <td class="border-0 text-end">{{current_cash}}</td>
+                    </tr>
+                    <tr>
+                        <td class="border-0 fw-bold text-end" colspan="3">TOTAL</td>
+                        <td class="border-0 w-bold text-end">{{grand_total}}</td>
+                    </tr>
+
+                </tfoot>
+            </table>
+        </div>
+    </form>
+{% endblock %}

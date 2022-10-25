@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="get">
+        <div class="mb-3">
+            <h3>History</h3>
+            <table>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price at time of operation</th>
+                    <th>Operation</th>
+                    <th>Date and time</th>
+                </tr>
+                {% for stock in stocks_db %}
+                <tr>
+                    <td>{{ stock.get("symbol") }}</td>
+                    <td>{{ stock.get("shares") }}</td>
+                    <td>{{ stock.get("op_price") |usd }}</td>
+                    <td>{{ stock.get("operation") }}</td>
+                    <td>{{ stock.get("date_time")}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+{% endblock %}

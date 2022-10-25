@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+<form action="/profile" method="post"></form>
+<div>
+    <form action="/change_password" method="post">
+        <div class="mb-3">
+            <h3>Change Password</h3>
+            <input class="form-control mx-auto w-auto" id="old_pass" name="old_pass" placeholder="Old Password" type="password">
+            <input class="form-control mx-auto w-auto" id="new_pass" name="new_pass" placeholder="New Password" type="password">
+            <button class="btn btn-primary" type="submit">Change password</button>
+    </form>
+</div>
+<hr class="dashed">
+<div>
+    <form action="/add_cash" method="post">
+        <h3>Add more cash</h3>
+        <input name="extracash" placeholder="Cash" type="number">
+        <input type="submit" value="Add cash!">
+    </form>
+</div>
+{% endblock %}
